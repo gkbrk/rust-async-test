@@ -1,0 +1,18 @@
+[package]
+name = "leo-async"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[profile.release]
+lto = true
+codegen-units = 1
+
+[dependencies]
+nix = { version = "0.28", features = ["socket", "poll", "event"], optional = true }
+crossbeam = "0.8"
+
+[features]
+default = ["nix"]
+nix = ["dep:nix"]
